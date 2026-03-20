@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lang, setLang] = useState('EN');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,12 +51,23 @@ export default function Header() {
           <Link href="/global-network" onClick={() => setMobileMenuOpen(false)}>Global Network</Link>
           <Link href="/join-us" onClick={() => setMobileMenuOpen(false)}>Join Us</Link>
           <div className="auth-action-mobile">
-            <Link href="/login" className="login-btn highlight-btn" onClick={() => setMobileMenuOpen(false)}>Member Portal</Link>
+            <Link href="/login" className="login-btn highlight-btn" onClick={() => setMobileMenuOpen(false)}>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              Member Portal
+            </Link>
           </div>
         </nav>
         
-        <div className="auth-action desktop-only">
-          <Link href="/login" className="login-btn highlight-btn">Member Portal</Link>
+        <div className="header-actions desktop-only">
+          <div className="lang-toggle">
+            <button className={`lang-btn ${lang === 'EN' ? 'active' : ''}`} onClick={() => setLang('EN')}>EN</button>
+            <span className="divider">|</span>
+            <button className={`lang-btn ${lang === 'ES' ? 'active' : ''}`} onClick={() => setLang('ES')}>ES</button>
+          </div>
+          <Link href="/login" className="login-btn highlight-btn">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            Member Portal
+          </Link>
         </div>
       </div>
       <style jsx>{`
@@ -119,23 +131,53 @@ export default function Header() {
         .nav-links a:hover::after {
           width: 100%;
         }
-        .highlight-btn {
-          background: linear-gradient(135deg, var(--cobalt-accent), #0369a1);
-          color: white;
-          padding: 12px 28px;
-          border-radius: 6px;
+        .header-actions {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+        }
+        .lang-toggle {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(15, 23, 42, 0.03);
+          padding: 4px 12px;
+          border-radius: 20px;
+        }
+        .lang-btn {
+          background: none;
+          border: none;
+          font-size: 13px;
           font-weight: 600;
-          font-size: 15px;
+          color: var(--text-secondary);
+          cursor: pointer;
+          transition: color 0.2s;
+          padding: 4px;
+        }
+        .lang-btn:hover { color: var(--cobalt-accent); }
+        .lang-btn.active { color: var(--text-primary); }
+        .divider { color: rgba(15,23,42,0.2); font-size: 12px; }
+
+        .highlight-btn {
+          background: linear-gradient(135deg, #0ea5e9, #0284c7);
+          color: white !important;
+          padding: 12px 28px;
+          border-radius: 50px;
+          font-weight: 700;
+          font-size: 14px;
           letter-spacing: 0.5px;
+          text-transform: uppercase;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-          display: inline-block;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border: 2px solid rgba(255, 255, 255, 0.2);
         }
         .highlight-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
-          background: linear-gradient(135deg, #0369a1, #0284C7);
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5);
+          background: linear-gradient(135deg, #0284c7, #0369a1);
         }
         .mobile-toggle {
           display: none;
