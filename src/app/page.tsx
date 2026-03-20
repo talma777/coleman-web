@@ -152,8 +152,13 @@ export default function Home() {
           .services-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-          .hero-title { font-size: 48px; }
-          .hero-actions { flex-direction: column; }
+          .hero-title { font-size: 42px; line-height: 1.2; }
+          .hero-desc { font-size: 18px; margin-bottom: 32px; }
+          .hero-actions { flex-direction: column; width: 100%; gap: 16px; }
+          .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+          .core-services, .global-map-preview { padding: 60px 0; }
+          .section-header h2, .map-content h2 { font-size: 32px; }
+          .service-card { padding: 32px; }
         }
       `}</style>
     </>

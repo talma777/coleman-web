@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,17 +32,29 @@ export default function Header() {
             </svg>
           </div>
         </Link>
-        <nav className="nav-links">
-          <Link href="/the-firm">The Firm</Link>
-          <Link href="/team">Leadership & Team</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/sectors">Sectors</Link>
-          <Link href="/insights-events">Insights & Events</Link>
-          <Link href="/global-network">Global Network</Link>
-          <Link href="/join-us">Join Us</Link>
+        
+        {/* Mobile menu toggle */}
+        <button className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <span className={`bar ${mobileMenuOpen ? 'open' : ''}`}></span>
+          <span className={`bar ${mobileMenuOpen ? 'open' : ''}`}></span>
+          <span className={`bar ${mobileMenuOpen ? 'open' : ''}`}></span>
+        </button>
+
+        <nav className={`nav-links ${mobileMenuOpen ? 'mobile-active' : ''}`}>
+          <Link href="/the-firm" onClick={() => setMobileMenuOpen(false)}>The Firm</Link>
+          <Link href="/team" onClick={() => setMobileMenuOpen(false)}>Leadership & Team</Link>
+          <Link href="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+          <Link href="/sectors" onClick={() => setMobileMenuOpen(false)}>Sectors</Link>
+          <Link href="/insights-events" onClick={() => setMobileMenuOpen(false)}>Insights & Events</Link>
+          <Link href="/global-network" onClick={() => setMobileMenuOpen(false)}>Global Network</Link>
+          <Link href="/join-us" onClick={() => setMobileMenuOpen(false)}>Join Us</Link>
+          <div className="auth-action-mobile">
+            <Link href="/login" className="login-btn highlight-btn" onClick={() => setMobileMenuOpen(false)}>Member Portal</Link>
+          </div>
         </nav>
-        <div className="auth-action">
-          <Link href="/login" className="login-btn">Member Portal</Link>
+        
+        <div className="auth-action desktop-only">
+          <Link href="/login" className="login-btn highlight-btn">Member Portal</Link>
         </div>
       </div>
       <style jsx>{`
@@ -85,22 +98,109 @@ export default function Header() {
           color: var(--text-primary);
           font-weight: 500;
           font-size: 15px;
-          transition: color 0.2s ease;
+          position: relative;
+          transition: color 0.3s ease;
+          padding: 8px 0;
+        }
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: var(--cobalt-accent);
+          transition: width 0.3s ease;
         }
         .nav-links a:hover {
           color: var(--cobalt-accent);
         }
-        .login-btn {
-          background: var(--coleman-navy);
-          color: white;
-          padding: 10px 24px;
-          border-radius: 4px;
-          font-weight: 500;
-          font-size: 14px;
-          transition: background 0.2s ease;
+        .nav-links a:hover::after {
+          width: 100%;
         }
-        .login-btn:hover {
-          background: var(--cobalt-accent);
+        .highlight-btn {
+          background: linear-gradient(135deg, var(--cobalt-accent), #0369a1);
+          color: white;
+          padding: 12px 28px;
+          border-radius: 6px;
+          font-weight: 600;
+          font-size: 15px;
+          letter-spacing: 0.5px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+          display: inline-block;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .highlight-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+          background: linear-gradient(135deg, #0369a1, #0284C7);
+        }
+        .mobile-toggle {
+          display: none;
+          flex-direction: column;
+          gap: 6px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 1001;
+        }
+        .mobile-toggle .bar {
+          width: 28px;
+          height: 3px;
+          background-color: var(--coleman-navy);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .mobile-toggle .bar.open:nth-child(1) {
+          transform: translateY(9px) rotate(45deg);
+        }
+        .mobile-toggle .bar.open:nth-child(2) {
+          opacity: 0;
+        }
+        .mobile-toggle .bar.open:nth-child(3) {
+          transform: translateY(-9px) rotate(-45deg);
+        }
+        .auth-action-mobile {
+          display: none;
+          margin-top: 20px;
+        }
+
+        @media (max-width: 1024px) {
+          .nav-links {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            gap: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-150%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            text-align: center;
+          }
+          .nav-links.mobile-active {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          .nav-links a {
+            font-size: 18px;
+          }
+          .mobile-toggle {
+            display: flex;
+          }
+          .desktop-only {
+            display: none;
+          }
+          .auth-action-mobile {
+            display: block;
+          }
+        }
+        @media (max-width: 480px) {
+           .header-container { padding: 15px 20px; }
         }
       `}</style>
     </header>
