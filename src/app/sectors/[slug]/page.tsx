@@ -1,9 +1,8 @@
-'use client';
+export const runtime = 'edge';
 
-import React from 'react';
-
-export default function SectorDetail({ params }: { params: { slug: string } }) {
-  const formattedSlug = params.slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+export default async function SectorDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const formattedSlug = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
   return (
     <>

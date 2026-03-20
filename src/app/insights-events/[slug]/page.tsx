@@ -1,9 +1,8 @@
-'use client';
+export const runtime = 'edge';
 
-import React from 'react';
-
-export default function InsightDetail({ params }: { params: { slug: string } }) {
-  const title = params.slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+export default async function InsightDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const title = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
   return (
     <>
