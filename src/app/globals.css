@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Nuevo Tema Claro (Fondo Blanco - Big4) */
+  --coleman-navy: #0F172A; /* Usado para textos oscuros y logos */
+  --coleman-navy-dark: #FFFFFF; /* Ahora el fondo primario es puro blanco */
+  --cobalt-accent: #0284C7; /* Brand blue mantained for highlights */
+  --platinum-silver: #475569; /* Gris oscuro para textos secundarios */
+  
+  --bg-primary: #FFFFFF; 
+  --bg-secondary: #F8FAFC; /* Light gray para secciones alternadas */
+  --text-primary: #0F172A; /* Dark navy text */
+  --text-secondary: #475569; /* Dark gray text */
+  
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Glassmorphism -> ahora son Solid White / Light Shadows (estilo limpio) */
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  backdrop-filter: none;
+  border-radius: 8px;
+  color: var(--text-primary);
+}
+
+.glass-card p {
+  color: var(--text-secondary) !important;
+}
+
+.glass-card h3, .glass-card h4 {
+  color: var(--text-primary) !important;
+}
+
+/* Base button */
+.btn-primary {
+  background: var(--coleman-navy);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--cobalt-accent);
+}
+
+.subtitle {
+  color: var(--text-secondary) !important;
+}
