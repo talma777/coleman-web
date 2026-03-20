@@ -44,7 +44,6 @@ export default function Header() {
 
         <nav className={`nav-links ${mobileMenuOpen ? 'mobile-active' : ''}`}>
           <Link href="/the-firm" onClick={() => setMobileMenuOpen(false)}>The Firm</Link>
-          <Link href="/team" onClick={() => setMobileMenuOpen(false)}>Leadership & Team</Link>
           <Link href="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
           <Link href="/sectors" onClick={() => setMobileMenuOpen(false)}>Sectors</Link>
           <Link href="/insights-events" onClick={() => setMobileMenuOpen(false)}>Insights & Events</Link>
@@ -93,7 +92,7 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 20px 40px;
+          padding: 16px 24px;
         }
         .logo-link {
           display: flex;
@@ -105,7 +104,8 @@ export default function Header() {
         }
         .nav-links {
           display: flex;
-          gap: 32px;
+          align-items: center;
+          gap: 24px;
         }
         .nav-links a {
           color: var(--text-primary);
@@ -113,7 +113,8 @@ export default function Header() {
           font-size: 15px;
           position: relative;
           transition: color 0.3s ease;
-          padding: 8px 0;
+          padding: 4px 0;
+          white-space: nowrap;
         }
         .nav-links a::after {
           content: '';
@@ -209,7 +210,7 @@ export default function Header() {
           margin-top: 20px;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1150px) {
           .nav-links {
             position: fixed;
             top: 70px;
