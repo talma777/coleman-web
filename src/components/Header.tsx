@@ -21,14 +21,15 @@ export default function Header() {
         <Link href="/" className="logo-link">
           <div className="logo-wrapper">
              {/* COLEMAN Isologotype - Dark Version for Light Background */}
-             <svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
-              <g transform="translate(0, 5)">
+             <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(0, 0)">
                 <path d="M0 0 h 12 v 12 h -12 z" fill="#0284C7"/>
                 <path d="M16 0 h 6 v 30 h -6 z" fill="#0F172A"/>
                 <path d="M0 16 h 12 v 14 h -12 z" fill="#475569"/>
                 <path d="M26 12 h 8 v 18 h -8 z" fill="#0284C7"/>
               </g>
-              <text x="45" y="28" fontFamily="'Outfit', sans-serif" fontSize="26" fontWeight="700" fill="#0F172A" letterSpacing="2">COLEMAN</text>
+              <text x="45" y="24" fontFamily="'Outfit', sans-serif" fontSize="28" fontWeight="700" fill="#0F172A" letterSpacing="1.5">COLEMAN</text>
+              <text x="47" y="38" fontFamily="'Inter', sans-serif" fontSize="9" fontWeight="600" fill="#475569" letterSpacing="2.5">EXPERTS CONSULTANTS</text>
             </svg>
           </div>
         </Link>

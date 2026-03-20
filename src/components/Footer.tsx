@@ -10,7 +10,18 @@ export default function Footer() {
       <div className="footer-container">
         
         <div className="footer-brand">
-          <div className="footer-logo">COLEMAN</div>
+          <div className="footer-logo">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(0, 0)">
+                <path d="M0 0 h 12 v 12 h -12 z" fill="#0284C7"/>
+                <path d="M16 0 h 6 v 30 h -6 z" fill="#0F172A"/>
+                <path d="M0 16 h 12 v 14 h -12 z" fill="#475569"/>
+                <path d="M26 12 h 8 v 18 h -8 z" fill="#0284C7"/>
+              </g>
+              <text x="45" y="24" fontFamily="'Outfit', sans-serif" fontSize="28" fontWeight="700" fill="#0F172A" letterSpacing="1.5">COLEMAN</text>
+              <text x="47" y="38" fontFamily="'Inter', sans-serif" fontSize="9" fontWeight="600" fill="#475569" letterSpacing="2.5">EXPERTS CONSULTANTS</text>
+            </svg>
+          </div>
           <p className="footer-desc">
             A premier global network of independent accounting firms, business consultants, and specialist legal advisers.
           </p>
@@ -70,12 +81,7 @@ export default function Footer() {
         }
 
         .footer-logo {
-          font-family: var(--font-heading);
-          font-size: 32px;
-          font-weight: 700;
-          letter-spacing: 0.1em;
           margin-bottom: 24px;
-          color: var(--coleman-navy);
         }
 
         .footer-desc {
