@@ -78,3 +78,13 @@ h1, h2, h3, h4, h5, h6 {
 .subtitle {
   color: var(--text-secondary) !important;
 }
+
+/* Sector layout CSS */
+.sector-hero { background: var(--bg-primary); text-align: left; border-bottom: 1px solid rgba(15, 23, 42, 0.05); }
+.sector-content { background: var(--bg-secondary); padding: 80px 0; min-height: 50vh; }
+
+/* Insight layout CSS */
+.insight-hero { background: var(--bg-primary); text-align: left; border-bottom: 1px solid rgba(15, 23, 42, 0.05); }
+.insight-content { background: var(--bg-secondary); padding: 80px 0; min-height: 50vh; }
+.article-body p.lead { font-size: 22px; color: var(--text-primary); margin-bottom: 32px; font-weight: 300; line-height: 1.6; }
+.article-body p { font-size: 18px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }

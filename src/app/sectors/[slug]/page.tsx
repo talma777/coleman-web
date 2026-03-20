@@ -1,4 +1,21 @@
-export const runtime = 'edge';
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  return [
+    { slug: 'agriculture-forestry-and-fishing' },
+    { slug: 'arts-entertainment-and-media' },
+    { slug: 'construction-and-engineering' },
+    { slug: 'energy-resources-and-utilities' },
+    { slug: 'food-and-drink' },
+    { slug: 'health-and-education' },
+    { slug: 'insurance-banking-and-finance' },
+    { slug: 'manufacturing-and-distribution' },
+    { slug: 'professional-services' },
+    { slug: 'real-estate' },
+    { slug: 'technology-and-life-sciences' },
+    { slug: 'transport-and-travel' }
+  ];
+}
 
 export default async function SectorDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -32,13 +49,6 @@ export default async function SectorDetail({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      <style jsx>{`
-        .sector-hero { background: var(--bg-primary); text-align: left; border-bottom: 1px solid rgba(15, 23, 42, 0.05); }
-        .container { max-width: 1400px; margin: 0 auto; padding: 40px; }
-        h1 { font-size: 56px; color: var(--text-primary); font-weight: 300; margin-bottom: 24px; }
-        .subtitle { color: var(--text-secondary); font-size: 20px; max-width: 800px; line-height: 1.6; }
-        .sector-content { background: var(--bg-secondary); padding: 80px 0; min-height: 50vh; }
-      `}</style>
     </>
   );
 }
